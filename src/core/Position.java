@@ -9,9 +9,15 @@ public class Position {
         this.y = y;
     }
 
-    //public int intX(){
-    //    return x;
-   // }
+    public int intX(){
+        return (int) Math.round(x);
+    }
+
+    public int intY() {
+        return (int) Math.round(y);
+    }
+
+
     public double getX() {
         return x;
     }
