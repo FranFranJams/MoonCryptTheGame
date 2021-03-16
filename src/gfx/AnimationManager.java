@@ -37,7 +37,7 @@ public class AnimationManager {
             currentFrameTime = 0;
             frameIndex++;
 
-            if (frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE - 1) {
+            if (frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE) {
                 frameIndex = 0;
             }
         }

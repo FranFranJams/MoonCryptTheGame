@@ -1,7 +1,7 @@
 package entity;
 
 import controller.Controller;
-import core.Movement;
+import core.Motion;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
 
@@ -10,20 +10,20 @@ import java.awt.*;
 public abstract class MovingEntity extends GameObject {
 
     private Controller controller;
-    private Movement movement;
+    private Motion motion;
     private AnimationManager animationManager;
 
     public MovingEntity(Controller controller, SpriteLibrary spriteLibrary) {
         super();
         this.controller = controller;
-        this.movement = new Movement(2);
+        this.motion = new Motion(2);
         animationManager = new AnimationManager(spriteLibrary.getUnit("dave"));
     }
 
     @Override
     public void update() {
-        movement.update(controller);
-        position.apply(movement);
+        motion.update(controller);
+        position.apply(motion);
         animationManager.update();
     }
 
