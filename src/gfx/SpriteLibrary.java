@@ -16,18 +16,18 @@ public class SpriteLibrary {
         loadSpritesFromDisk();
     }
 
-    private void loadSpritesFromDisk(){
+    private void loadSpritesFromDisk() {
         String[] folderNames = getFolderNames(PATH_TO_UNITS);
 
-        for(String folderName: folderNames){
+        for(String folderName: folderNames) {
             SpriteSet spriteSet = new SpriteSet();
             String pathToFolder = PATH_TO_UNITS + "/" + folderName;
             String[] sheetsInFolder = getSheetsInFolder(pathToFolder);
 
-            for(String sheetName: sheetsInFolder){
-               spriteSet.addSheet(
-                       sheetName.substring(0, sheetName.length() - 4),
-                       ImageUtils.loadImage(pathToFolder + "/" + sheetName));
+            for(String sheetName: sheetsInFolder) {
+                spriteSet.addSheet(
+                        sheetName.substring(0, sheetName.length() - 4),
+                        ImageUtils.loadImage(pathToFolder + "/" + sheetName));
             }
 
             units.put(folderName, spriteSet);
@@ -41,10 +41,12 @@ public class SpriteLibrary {
     }
 
     private String[] getFolderNames(String basePath) {
-        URL resource = SpriteLibrary.class.getResource(basePath);
+        URL resource = SpriteLibrary.class.getResource("/sprites/units");
         File file = new File(resource.getFile());
         return file.list((current, name) -> new File(current, name).isDirectory());
     }
 
-
+    public SpriteSet getUnit(String name) {
+        return units.get(name);
+    }
 }

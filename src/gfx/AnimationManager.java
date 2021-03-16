@@ -18,6 +18,7 @@ public class AnimationManager {
         this.updatesPerFrame = 20;
         this.frameIndex = 0;
         this.currentFrameTime = 0;
+        playAnimation("stand");
     }
 
     public Image getSprite() {

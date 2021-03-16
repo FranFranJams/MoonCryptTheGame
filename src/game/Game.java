@@ -24,8 +24,9 @@ public class Game {
         input = new Input();
         display = new Display(width, height, input);
         gameObjects = new ArrayList<>();
-        gameObjects.add(new Player(new PlayerController(input)));
         spriteLibrary = new SpriteLibrary();
+        gameObjects.add(new Player(new PlayerController(input),spriteLibrary));
+
     }
 
     public void update() {
