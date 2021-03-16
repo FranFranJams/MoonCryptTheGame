@@ -12,6 +12,9 @@ import java.util.List;
 
 public class Game {
 
+    public static int SPRITE_SIZE = 64;
+
+
     private Display display;
     private List<GameObject> gameObjects;
     private Input input;
