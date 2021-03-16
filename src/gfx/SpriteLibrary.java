@@ -39,7 +39,7 @@ public class SpriteLibrary {
         File file = new File(resource.getFile());
         return file.list((current, name) -> new File(current, name).isFile());
     }
-testing
+
     private String[] getFolderNames(String basePath) {
         URL resource = SpriteLibrary.class.getResource(basePath);
         File file = new File(resource.getFile());
