@@ -42,4 +42,7 @@ public class Motion {
         System.out.println(vector.length());
     }
 
+    public boolean isMoving() {
+        return vector.length() > 0;
+    }
 }

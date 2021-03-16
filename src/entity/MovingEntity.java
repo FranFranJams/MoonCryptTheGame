@@ -1,6 +1,7 @@
 package entity;
 
 import controller.Controller;
+import core.Direction;
 import core.Motion;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
@@ -12,11 +13,13 @@ public abstract class MovingEntity extends GameObject {
     private Controller controller;
     private Motion motion;
     private AnimationManager animationManager;
+    private Direction direction;
 
     public MovingEntity(Controller controller, SpriteLibrary spriteLibrary) {
         super();
         this.controller = controller;
         this.motion = new Motion(2);
+        this.direction = Direction.S;
         animationManager = new AnimationManager(spriteLibrary.getUnit("dave"));
     }
 
@@ -24,8 +27,15 @@ public abstract class MovingEntity extends GameObject {
     public void update() {
         motion.update(controller);
         position.apply(motion);
-        animationManager.update();
+        animationManager.update(direction);
     }
+
+    public void manageDirection() {
+        if(motion.isMoving()){
+            this.direction = Direction.fromMotion(motion);
+        }
+    }
+
 
     @Override
     public Image getSprite() {

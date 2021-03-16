@@ -12,6 +12,7 @@ public class AnimationManager {
     private int updatesPerFrame;
     private int currentFrameTime;
     private int frameIndex;
+    private int directionIndex;
 
     public AnimationManager(SpriteSet spriteSet){
         this.spriteSet = spriteSet;
