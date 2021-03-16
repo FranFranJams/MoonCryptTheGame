@@ -29,14 +29,14 @@ public class AnimationManager {
         );
     }
 
-    public void update(){
+    public void update() {
         currentFrameTime++;
 
-        if(currentFrameTime >= updatesPerFrame){
+        if (currentFrameTime >= updatesPerFrame) {
             currentFrameTime = 0;
             frameIndex++;
 
-            if(frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE - 1) {
+            if (frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE - 1) {
                 frameIndex = 0;
             }
         }
