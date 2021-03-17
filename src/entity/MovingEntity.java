@@ -27,6 +27,7 @@ public abstract class MovingEntity extends GameObject {
     public void update() {
         motion.update(controller);
         position.apply(motion);
+        manageDirection();
         animationManager.update(direction);
     }
 
