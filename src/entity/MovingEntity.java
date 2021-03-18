@@ -20,7 +20,7 @@ public abstract class MovingEntity extends GameObject {
         this.controller = controller;
         this.motion = new Motion(2);
         this.direction = Direction.S;
-        animationManager = new AnimationManager(spriteLibrary.getUnit("dave"));
+        animationManager = new AnimationManager(spriteLibrary.getUnit("matt"));
     }
 
     @Override
@@ -28,8 +28,19 @@ public abstract class MovingEntity extends GameObject {
         motion.update(controller);
         position.apply(motion);
         manageDirection();
+        decideAnimation();
         animationManager.update(direction);
     }
+
+    public void decideAnimation() {
+        if(motion.isMoving()) {
+            animationManager.playAnimation("walk");
+        } else {
+            animationManager.playAnimation("stand");
+        }
+    }
+
+
 
     public void manageDirection() {
         if(motion.isMoving()){
