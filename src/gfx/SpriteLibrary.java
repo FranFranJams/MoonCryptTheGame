@@ -11,8 +11,6 @@ import java.util.Map;
 
 public class SpriteLibrary {
 
-    private final static String PATH_TO_UNITS = "/sprites/units";
-
     private Map<String, SpriteSet> units;
     private Map<String, Image> tiles;
 
@@ -24,12 +22,12 @@ public class SpriteLibrary {
     }
 
     private void loadSpritesFromDisk() {
-        loadUnits();
-        loadTiles();
+        loadUnits("/sprites/units");
+        loadTiles("/sprites/tiles");
     }
 
 
-    public void loadTiles() {
+    public void loadTiles(String path) {
         BufferedImage image = new BufferedImage(Game.SPRITE_SIZE, Game.SPRITE_SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
 
@@ -42,13 +40,13 @@ public class SpriteLibrary {
     }
 
 
-    private void loadUnits(){
-        String[] folderNames = getFolderNames(PATH_TO_UNITS);
+    private void loadUnits(String path){
+        String[] folderNames = getFolderNames(path);
 
         for(String folderName: folderNames) {
             SpriteSet spriteSet = new SpriteSet();
-            String pathToFolder = PATH_TO_UNITS + "/" + folderName;
-            String[] sheetsInFolder = getSheetsInFolder(pathToFolder);
+            String pathToFolder = path + "/" + folderName;
+            String[] sheetsInFolder = getImagesInFolder(pathToFolder);
 
             for(String sheetName: sheetsInFolder) {
                 spriteSet.addSheet(
@@ -61,7 +59,7 @@ public class SpriteLibrary {
     }
 
 
-    private String[] getSheetsInFolder(String basePath) {
+    private String[] getImagesInFolder(String basePath) {
         URL resource = SpriteLibrary.class.getResource(basePath);
         File file = new File(resource.getFile());
         return file.list((current, name) -> new File(current, name).isFile());
